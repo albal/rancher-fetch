@@ -1,0 +1,35 @@
+---
+# tasks file for rancher-docker
+- name: Install packages
+  apt:
+    state: present
+    pkg:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - gnupg-agent
+      - software-properties-common
+      - python-pip
+    update_cache: yes
+
+- name: Add an Apt for docker
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    state: present
+
+- name: Add docker repo
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ ansible_lsb["codename"] }} stable
+    state: present
+
+- name: Install docker
+  apt:
+    state: present
+    pkg:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+
+- name: Install Docker Python module
+  pip:
+    name: docker

@@ -1,0 +1,8 @@
+---
+# tasks file for rancher-populate
+- name: Ensure destination archive abest
+  file:
+    name: /tmp/rancher-images.tar.gz
+    state: absent
+- name: Save docker images
+  shell: for i in $(cat /tmp/rancher-images.txt); do echo ${i} ; docker save ${i} | gzip -c >> /tmp/rancher-images.tar.gz; done

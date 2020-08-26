@@ -1,0 +1,9 @@
+---
+- hosts: ubuntu
+  roles:
+    - hostname
+    - rancher-docker
+    - rancher-registry
+    - rancher-fetch
+    - rancher-populate
+    - rancher-export

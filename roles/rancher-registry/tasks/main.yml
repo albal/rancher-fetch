@@ -1,0 +1,6 @@
+---
+# tasks file for roles/rancher-registry
+- name: Create a registry container
+  docker_container:
+    name: registry
+    image: registry

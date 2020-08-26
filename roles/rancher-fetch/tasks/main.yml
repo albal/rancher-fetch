@@ -1,0 +1,9 @@
+---
+# tasks file for rancher-fetch
+- name: Grab releases from Github
+  get_url:
+    url: https://github.com/rancher/rancher/releases/download/v2.2.11/rancher-images.txt
+    dest: /tmp/rancher-images.txt
+
+- name: Get images
+  shell: "for i in $(cat /tmp/rancher-images.txt); do docker pull ${i}; done"
