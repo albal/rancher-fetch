@@ -1,6 +1,6 @@
 ---
 # tasks file for rancher-populate
-- name: Ensure destination archive abest
+- name: Ensure destination archive absent
   file:
     name: /tmp/rancher-images.tar.gz
     state: absent
